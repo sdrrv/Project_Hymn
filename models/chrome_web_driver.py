@@ -6,3 +6,9 @@ class chr_driver:
         self.driver = Chrome()
         self.opts= Options()
         self.opts.headless= headless
+    
+    def get_driver(self):
+        return self.driver
+    
+    def close(self):
+        self.get_driver().close()
