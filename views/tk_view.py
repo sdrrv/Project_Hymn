@@ -5,8 +5,8 @@ class tk_view:
         #-----------------------Data-Structors----------------------------------
         self.musics=[]
         #------------------Creating-the-main-screen-----------------------------
-        self.app = tkinter.Tk(screenName="main") #Making the main root
-        self.app.geometry("300x200") # Setting the size of the main window
+        self.app = tkinter.Tk() #Making the main root
+        self.app.geometry("500x500") # Setting the size of the main window
         self.app.title("Hymn") 
         self.app.iconbitmap("icons/icon.ico") #Setting the main left top icon
         #-----------------Populating-the-main-screen----------------------------
@@ -14,9 +14,19 @@ class tk_view:
         self.music_grid= tkinter.Listbox(master=self.app)
         self.music_grid.grid(row=0,column=0)
         #..........Buttons...............................
-        self.submit_button= tkinter.Button(master=self.app,command=pass)
+        self.submit_button = tkinter.Button(master=self.app,command=self.submit_button_action)
+
+        self.delete_button = tkinter.Button(master=self.app)
+
+        self.add_music_button = tkinter.Button(master=self.app)
+
         #..........Entry.................................
+        self.music_input= tkinter.Entry(master= self.app)
+        
         #..........Labels................................
 
     def add_music(self,music):
+        pass
+    
+    def submit_button_action(self):
         pass
