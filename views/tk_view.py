@@ -18,7 +18,7 @@ class tk_view:
 
         self.delete_button = tkinter.Button(master=self.app)
 
-        self.add_music_button = tkinter.Button(master=self.app,text="Add")
+        self.add_music_button = tkinter.Button(master=self.app,text="Add",command=self.add_music_button_action)
         self.add_music_button.grid(row=1,column=1)
 
         #..........Entry.................................
@@ -34,8 +34,13 @@ class tk_view:
     def add_music(self,music):
         if not music in self.musics:
             self.musics.append(music)
+            self.update_grid()
         
     
     def submit_button_action(self):
         pass
+
+    def add_music_button_action(self):
+        self.add_music(self.music_input.get())
+        self.music_input.delete(0,len(self.music_input.get()))
 
