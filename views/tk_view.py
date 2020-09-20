@@ -29,7 +29,7 @@ class tk_view:
         
 #!----------------------------------------------------------------------------------------------------------
     def update_grid(self):
-        self.music_grid.delete(0,len(self.musics))
+        self.music_grid.delete(0,"end")
         for i in range(len(self.musics)):
             self.music_grid.insert(i,self.musics[i])
 
@@ -47,5 +47,7 @@ class tk_view:
         self.music_input.delete(0,len(self.music_input.get()))
     
     def delete_button_action(self):
-        pass
-
+        to_del= [self.musics[i] for i in self.music_grid.curselection()]
+        for i in to_del:
+            self.musics.remove(i)
+        self.update_grid()
