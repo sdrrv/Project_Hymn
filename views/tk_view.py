@@ -1,9 +1,11 @@
 import tkinter
+from controllers.controller import controller
 
 class tk_view:
     def __init__(self):
         #?-----------------------Data-Structors----------------------------------
         self.musics=[]
+        self.controller = controller()
         #?------------------Creating-the-main-screen-----------------------------
         self.app = tkinter.Tk() #Making the main root
         self.app.geometry("500x500") # Setting the size of the main window
