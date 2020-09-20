@@ -61,4 +61,4 @@ class tk_view:
         new_app.title("Select") 
         new_app.iconbitmap("icons/icon.ico") #Setting the main left top icon
         #?---------------------------------------------------------------------
-        
+        self.controller.open("https://www.youtube.com/results?search_query="+"Imagin Dragons")
