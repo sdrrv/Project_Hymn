@@ -2,15 +2,15 @@ import tkinter
 
 class tk_view:
     def __init__(self):
-        #-----------------------Data-Structors----------------------------------
+        #?-----------------------Data-Structors----------------------------------
         self.musics=[]
-        #------------------Creating-the-main-screen-----------------------------
+        #?------------------Creating-the-main-screen-----------------------------
         self.app = tkinter.Tk() #Making the main root
         self.app.geometry("500x500") # Setting the size of the main window
         self.app.title("Hymn") 
         self.app.iconbitmap("icons/icon.ico") #Setting the main left top icon
-        #-----------------Populating-the-main-screen----------------------------
-        #.........-Grid..................................
+        #?-----------------Populating-the-main-screen----------------------------
+        #.........Grid..................................
         self.music_grid= tkinter.Listbox(master=self.app)
         self.music_grid.grid(row=0,column=0)
         #..........Buttons...............................
@@ -25,7 +25,8 @@ class tk_view:
         self.music_input= tkinter.Entry(master= self.app)
         self.music_input.grid(row=1,column=0)
         #..........Labels................................
-
+        
+#!----------------------------------------------------------------------------------------------------------
     def update_grid(self):
         self.music_grid.delete(0,len(self.musics))
         for i in range(len(self.musics)):
