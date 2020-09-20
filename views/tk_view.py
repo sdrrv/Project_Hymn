@@ -11,12 +11,13 @@ class tk_view:
         self.app.iconbitmap("icons/icon.ico") #Setting the main left top icon
         #?-----------------Populating-the-main-screen----------------------------
         #.........Grid..................................
-        self.music_grid= tkinter.Listbox(master=self.app)
+        self.music_grid= tkinter.Listbox(master=self.app,selectmode="extended")
         self.music_grid.grid(row=0,column=0)
         #..........Buttons...............................
         self.submit_button = tkinter.Button(master=self.app,command=self.submit_button_action)
 
-        self.delete_button = tkinter.Button(master=self.app)
+        self.delete_button = tkinter.Button(master=self.app,text="Delete",command=self.delete_button_action)
+        self.delete_button.grid(row=3,column=0)
 
         self.add_music_button = tkinter.Button(master=self.app,text="Add",command=self.add_music_button_action)
         self.add_music_button.grid(row=1,column=1)
@@ -44,4 +45,7 @@ class tk_view:
     def add_music_button_action(self):
         self.add_music(self.music_input.get())
         self.music_input.delete(0,len(self.music_input.get()))
+    
+    def delete_button_action(self):
+        pass
 
