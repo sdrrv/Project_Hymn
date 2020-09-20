@@ -37,8 +37,8 @@ class tk_view:
         if not music in self.musics:
             self.musics.append(music)
             self.update_grid()
+        self.create_choice_window()
         
-    
     def submit_button_action(self):
         pass
 
@@ -51,3 +51,12 @@ class tk_view:
         for i in to_del:
             self.musics.remove(i)
         self.update_grid()
+    
+    def create_choice_window(self):
+        #?---------------------------------------------------------------------
+        new_app = tkinter.Toplevel(self.app)
+        new_app.geometry("300x300") # Setting the size of the main window
+        new_app.title("Select") 
+        new_app.iconbitmap("icons/icon.ico") #Setting the main left top icon
+        #?---------------------------------------------------------------------
+        
