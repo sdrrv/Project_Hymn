@@ -1,5 +1,7 @@
 import tkinter
 from controllers.controller import controller
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 class tk_view:
     def __init__(self):
@@ -39,7 +41,7 @@ class tk_view:
         if not music in self.musics:
             self.musics.append(music)
             self.update_grid()
-        self.create_choice_window(music)
+        print(self.create_choice_window(music))
         
     def submit_button_action(self):
         pass
@@ -62,3 +64,9 @@ class tk_view:
         new_app.iconbitmap("icons/icon.ico") #Setting the main left top icon
         #?---------------------------------------------------------------------
         self.controller.open("https://www.youtube.com/results?search_query="+inputer)
+        #-
+        wait = WebDriverWait(self.controller.webdriver.get_driver(), 3)
+        presence = EC.presence_of_element_located
+        visible = EC.visibility_of_element_located
+        #-
+        return self.controller.webdriver.get_driver().find_element_by_id("video-title").get_attribute("href")
