@@ -39,7 +39,7 @@ class tk_view:
         if not music in self.musics:
             self.musics.append(music)
             self.update_grid()
-        self.create_choice_window()
+        self.create_choice_window(music)
         
     def submit_button_action(self):
         pass
@@ -54,11 +54,11 @@ class tk_view:
             self.musics.remove(i)
         self.update_grid()
     
-    def create_choice_window(self):
+    def create_choice_window(self,inputer):
         #?---------------------------------------------------------------------
         new_app = tkinter.Toplevel(self.app)
         new_app.geometry("300x300") # Setting the size of the main window
         new_app.title("Select") 
         new_app.iconbitmap("icons/icon.ico") #Setting the main left top icon
         #?---------------------------------------------------------------------
-        self.controller.open("https://www.youtube.com/results?search_query="+"Imagin Dragons")
+        self.controller.open("https://www.youtube.com/results?search_query="+inputer)
