@@ -59,4 +59,19 @@ class tk_view:
         new_app.title("Select") 
         new_app.iconbitmap("icons/icon.ico") #Setting the main left top icon
         #?---------------------------------------------------------------------
+        new_window_submit_button = tkinter.Button(master = new_app, text= "Submit")
+        new_window_music_input = tkinter.Entry(master=new_app)
+        new_window_artist_input = tkinter.Entry(master=new_app)
+        new_window_music_label = tkinter.Label(master= new_app, text="Music Name:")
+        new_window_artist_label = tkinter.Label(master= new_app, text="Artist Name:")
+
+        new_window_music_label.grid(row=0,column=0)
+        new_window_music_input.grid(row=1,column=0)
+
+        new_window_artist_label.grid(row=0,column=2)
+        new_window_artist_input.grid(row=1,column=2)
+
+        new_window_submit_button.grid(row=2,column=1)
+
+
         return self.controller.shearch_youtube(inputer)
