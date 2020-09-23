@@ -3,7 +3,7 @@ from controllers.controller import controller
 class tk_view:
     def __init__(self):
         #?-----------------------Data-Structors----------------------------------
-        self.musics=[]
+        self.musics={}
         self.controller = controller()
         #?------------------Creating-the-main-screen-----------------------------
         self.app = tkinter.Tk() #Making the main root
@@ -30,20 +30,22 @@ class tk_view:
 #!----------------------------------------------------------------------------------------------------------
     def update_grid(self):
         self.music_grid.delete(0,"end")
-        for i in range(len(self.musics)):
-            self.music_grid.insert(i,self.musics[i])
+        tmp= [key for key in self.musics]
+        for i in range(len(tmp)):
+            self.music_grid.insert(i,tmp[i])
 
-    def add_music(self,music):
-        if not music in self.musics:
-            self.musics.append(music)
+    def add_music(self,music,url):
+        tmp= [key for key in self.musics]
+        if not music in tmp:
+            self.musics[music] = url
             self.update_grid()
-        print(self.create_choice_window(music))
+        #print(self.create_choice_window(music))
         
     def submit_button_action(self):
         pass
 
     def add_music_button_action(self):
-        self.add_music(self.music_input.get())
+        self.add_music(self.music_input.get(),"google")
         self.music_input.delete(0,len(self.music_input.get()))
     
     def delete_button_action(self):
@@ -55,11 +57,11 @@ class tk_view:
     def create_choice_window(self,inputer):
         #?---------------------------------------------------------------------
         new_app = tkinter.Toplevel(self.app)
-        new_app.geometry("300x300") # Setting the size of the main window
+        new_app.geometry("300x100") # Setting the size of the main window
         new_app.title("Select") 
         new_app.iconbitmap("icons/icon.ico") #Setting the main left top icon
         #?---------------------------------------------------------------------
-        new_window_submit_button = tkinter.Button(master = new_app, text= "Submit")
+        new_window_submit_button = tkinter.Button(master = new_app, text= "Submit", command = self.add_music())
         new_window_music_input = tkinter.Entry(master=new_app)
         new_window_artist_input = tkinter.Entry(master=new_app)
         new_window_music_label = tkinter.Label(master= new_app, text="Music Name:")
@@ -71,7 +73,7 @@ class tk_view:
         new_window_artist_label.grid(row=0,column=2)
         new_window_artist_input.grid(row=1,column=2)
 
-        new_window_submit_button.grid(row=2,column=1)
+        new_window_submit_button.grid(row=4,column=1)
 
-
-        return self.controller.shearch_youtube(inputer)
+        #return self.controller.shearch_youtube(inputer)
+    
