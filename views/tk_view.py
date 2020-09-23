@@ -49,9 +49,10 @@ class tk_view:
         self.music_input.delete(0,len(self.music_input.get()))
     
     def delete_button_action(self):
-        to_del= [self.musics[i] for i in self.music_grid.curselection()]
+        tmp= [key for key in self.musics]
+        to_del= [tmp[i] for i in self.music_grid.curselection()]
         for i in to_del:
-            self.musics.remove(i)
+            self.musics.pop(i,None)
         self.update_grid()
     
     def create_choice_window(self,inputer):
