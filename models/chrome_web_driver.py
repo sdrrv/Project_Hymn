@@ -1,5 +1,5 @@
 from selenium.webdriver import Chrome
-from selenium.webdriver.chrome import Options
+from selenium.webdriver.chrome.options import Options
 
 class chr_driver:
     def __init__(self,headless=False): # not setting headless to True will put it to default, witch is False.
