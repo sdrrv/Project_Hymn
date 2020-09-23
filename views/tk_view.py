@@ -1,8 +1,5 @@
 import tkinter
 from controllers.controller import controller
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-
 class tk_view:
     def __init__(self):
         #?-----------------------Data-Structors----------------------------------
@@ -29,8 +26,7 @@ class tk_view:
         #..........Entry.................................
         self.music_input= tkinter.Entry(master= self.app)
         self.music_input.grid(row=1,column=0)
-        #..........Labels................................
-        
+        #..........Labels................................     
 #!----------------------------------------------------------------------------------------------------------
     def update_grid(self):
         self.music_grid.delete(0,"end")
@@ -63,10 +59,4 @@ class tk_view:
         new_app.title("Select") 
         new_app.iconbitmap("icons/icon.ico") #Setting the main left top icon
         #?---------------------------------------------------------------------
-        self.controller.open("https://www.youtube.com/results?search_query="+inputer)
-        #-
-        wait = WebDriverWait(self.controller.webdriver.get_driver(), 3)
-        presence = EC.presence_of_element_located
-        visible = EC.visibility_of_element_located
-        #-
-        return self.controller.webdriver.get_driver().find_element_by_id("video-title").get_attribute("href")
+        return self.controller.shearch_youtube(inputer)
