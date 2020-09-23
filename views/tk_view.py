@@ -7,7 +7,7 @@ class tk_view:
         self.controller = controller()
         #?------------------Creating-the-main-screen-----------------------------
         self.app = tkinter.Tk() #Making the main root
-        self.app.geometry("500x500") # Setting the size of the main window
+        self.app.geometry("200x200") # Setting the size of the main window
         self.app.title("Hymn") 
         self.app.iconbitmap("icons/icon.ico") #Setting the main left top icon
         #?-----------------Populating-the-main-screen----------------------------
@@ -15,13 +15,14 @@ class tk_view:
         self.music_grid= tkinter.Listbox(master=self.app,selectmode="extended")
         self.music_grid.grid(row=0,column=0)
         #..........Buttons...............................
-        self.submit_button = tkinter.Button(master=self.app,command=self.submit_button_action)
+        self.submit_button = tkinter.Button(master=self.app,command=self.submit_button_action,text= "Submit")
+        self.submit_button.grid(row=1,column=3)
 
-        self.delete_button = tkinter.Button(master=self.app,text="Delete",command=self.delete_button_action)
-        self.delete_button.grid(row=3,column=0)
+        self.delete_button = tkinter.Button(master=self.app,text="Delete Music",command=self.delete_button_action)
+        self.delete_button.grid(row=1,column=0)
 
-        self.add_music_button = tkinter.Button(master=self.app,text="Add",command=self.add_music_button_action)
-        self.add_music_button.grid(row=1,column=1)
+        self.add_music_button = tkinter.Button(master=self.app,text="Add Music",command=self.add_music_button_action)
+        self.add_music_button.grid(row=0,column=3)
         #..........Labels................................
         #?--------------------new_window--------------------------------------------
         self.new_window_music_input = None
