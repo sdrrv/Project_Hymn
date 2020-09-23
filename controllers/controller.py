@@ -6,8 +6,10 @@ from selenium.webdriver.support import expected_conditions as EC
 class controller:
     def __init__(self):
         self.webdriver = chr_driver(True)
+        
     def open(self,to_open):
         self.webdriver.get_driver().get(to_open)
+
     def shearch_youtube(self,to_shearch):
         self.open("https://www.youtube.com/results?search_query="+to_shearch)
         wait = WebDriverWait(self.webdriver.get_driver(), 3)
