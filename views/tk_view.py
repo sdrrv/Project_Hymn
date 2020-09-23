@@ -22,11 +22,11 @@ class tk_view:
 
         self.add_music_button = tkinter.Button(master=self.app,text="Add",command=self.add_music_button_action)
         self.add_music_button.grid(row=1,column=1)
-
-        #..........Entry.................................
-        self.music_input= tkinter.Entry(master= self.app)
-        self.music_input.grid(row=1,column=0)
-        #..........Labels................................     
+        #..........Labels................................
+        #?--------------------new_window--------------------------------------------
+        self.new_window_music_input = None
+        self.new_window_artist_input = None
+        self.new_app = None
 #!----------------------------------------------------------------------------------------------------------
     def update_grid(self):
         self.music_grid.delete(0,"end")
@@ -39,14 +39,12 @@ class tk_view:
         if not music in tmp:
             self.musics[music] = url
             self.update_grid()
-        #print(self.create_choice_window(music))
         
     def submit_button_action(self):
         pass
 
     def add_music_button_action(self):
-        self.add_music(self.music_input.get(),"google")
-        self.music_input.delete(0,len(self.music_input.get()))
+        self.create_choice_window()
     
     def delete_button_action(self):
         tmp= [key for key in self.musics]
@@ -55,26 +53,29 @@ class tk_view:
             self.musics.pop(i,None)
         self.update_grid()
     
-    def create_choice_window(self,inputer):
+    def create_choice_window(self):
         #?---------------------------------------------------------------------
-        new_app = tkinter.Toplevel(self.app)
-        new_app.geometry("300x100") # Setting the size of the main window
-        new_app.title("Select") 
-        new_app.iconbitmap("icons/icon.ico") #Setting the main left top icon
+        self.new_app = tkinter.Toplevel(self.app)
+        self.new_app.geometry("300x100") # Setting the size of the main window
+        self.new_app.title("Select") 
+        self.new_app.iconbitmap("icons/icon.ico") #Setting the main left top icon
         #?---------------------------------------------------------------------
-        new_window_submit_button = tkinter.Button(master = new_app, text= "Submit", command = self.add_music())
-        new_window_music_input = tkinter.Entry(master=new_app)
-        new_window_artist_input = tkinter.Entry(master=new_app)
-        new_window_music_label = tkinter.Label(master= new_app, text="Music Name:")
-        new_window_artist_label = tkinter.Label(master= new_app, text="Artist Name:")
-
+        self.new_window_music_input = tkinter.Entry(master=self.new_app)
+        self.new_window_artist_input = tkinter.Entry(master=self.new_app)
+        new_window_music_label = tkinter.Label(master= self.new_app, text="Music Name:")
+        new_window_artist_label = tkinter.Label(master= self.new_app, text="Artist Name:")
+        new_window_submit_button = tkinter.Button(master = self.new_app, text= "Submit", command =self.new_window_submit)
         new_window_music_label.grid(row=0,column=0)
-        new_window_music_input.grid(row=1,column=0)
+        self.new_window_music_input.grid(row=1,column=0)
 
         new_window_artist_label.grid(row=0,column=2)
-        new_window_artist_input.grid(row=1,column=2)
+        self.new_window_artist_input.grid(row=1,column=2)
 
         new_window_submit_button.grid(row=4,column=1)
 
-        #return self.controller.shearch_youtube(inputer)
-    
+    def new_window_submit(self):
+        music = self.new_window_music_input.get()
+        artist = self.new_window_artist_input.get()
+        self.add_music(music+" - "+artist,self.controller.shearch_youtube(music+" - "+artist) )
+        self.new_app.destroy()
+        self.new_app.update()
