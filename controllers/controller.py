@@ -1,9 +1,18 @@
 from models.chrome_web_driver import chr_driver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 
 class controller:
     def __init__(self):
-        self.webdriver = chr_driver()
+        self.webdriver = chr_driver(True)
+        
     def open(self,to_open):
         self.webdriver.get_driver().get(to_open)
+
     def shearch_youtube(self,to_shearch):
-        pass
+        self.open("https://www.youtube.com/results?search_query="+to_shearch)
+        wait = WebDriverWait(self.webdriver.get_driver(), 3)
+        presence = EC.presence_of_element_located
+        visible = EC.visibility_of_element_located
+        return self.webdriver.get_driver().find_element_by_id("video-title").get_attribute("href")
