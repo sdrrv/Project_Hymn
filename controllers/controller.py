@@ -11,7 +11,10 @@ class controller:
 
     def get_musics_model(self):
         return self.musics
-        
+    
+    def get_musics_list(self):
+        return [music for music in self.musics.get_musics()]
+
     def open(self,to_open):
         self.webdriver.get_driver().get(to_open)
 

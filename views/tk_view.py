@@ -31,14 +31,14 @@ class tk_view:
 #!----------------------------------------------------------------------------------------------------------
     def update_grid(self):
         self.music_grid.delete(0,"end")
-        tmp= self.controller.get_musics_model.get_musics_list()
+        tmp= self.controller.get_musics_model().get_musics_list()
         for i in range(len(tmp)):
             self.music_grid.insert(i,tmp[i])
 
     def add_music(self,music,url):
-        tmp= self.controller.get_musics_model.get_musics_list()
+        tmp= self.controller.get_musics_list()
         if not music in tmp:
-            self.controller.get_musics_model.add_music(music,url)
+            self.controller.get_musics_model().add_music(music,url)
             self.update_grid()
         
     def submit_button_action(self):
@@ -48,10 +48,10 @@ class tk_view:
         self.create_choice_window()
     
     def delete_button_action(self):
-        tmp= self.controller.get_musics_model.get_musics_list()
+        tmp= self.controller.get_musics_model().get_musics_list()
         to_del= [tmp[i] for i in self.music_grid.curselection()]
         for i in to_del:
-            self.controller.get_musics_model.delete_music(i)
+            self.controller.get_musics_model().delete_music(i)
         self.update_grid()
     
     def create_choice_window(self):
