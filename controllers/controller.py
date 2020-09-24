@@ -1,11 +1,16 @@
 from models.chrome_web_driver import chr_driver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from models.musics import musics_model
 
 
 class controller:
     def __init__(self):
         self.webdriver = chr_driver(True)
+        self.musics = musics_model()
+
+    def get_musics_model(self):
+        return self.musics
         
     def open(self,to_open):
         self.webdriver.get_driver().get(to_open)
