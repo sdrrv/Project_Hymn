@@ -31,7 +31,7 @@ class tk_view:
 #!----------------------------------------------------------------------------------------------------------
     def update_grid(self):
         self.music_grid.delete(0,"end")
-        tmp= self.controller.get_musics_model().get_musics_list()
+        tmp= self.controller.get_musics_list()
         for i in range(len(tmp)):
             self.music_grid.insert(i,tmp[i])
 
@@ -42,7 +42,12 @@ class tk_view:
             self.update_grid()
         
     def submit_button_action(self):
-        pass
+        submit_list=self.controller.get_musics_list()
+        for music in submit_list:
+            self.controller.download_music(self.controller.get_musics_model().get_url(music))
+        self.controller.open("https://www.google.com/")
+        self.controller.end()
+        exit(0)
 
     def add_music_button_action(self):
         self.create_choice_window()
