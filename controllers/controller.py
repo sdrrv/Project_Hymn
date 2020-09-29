@@ -1,12 +1,13 @@
 from models.chrome_web_driver import chr_driver
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from models.musics import musics_model
 
 
 class controller:
     def __init__(self):
-        self.webdriver = chr_driver(True)
+        self.webdriver = chr_driver()
         self.musics = musics_model()
 
     def get_musics_model(self):
@@ -24,3 +25,17 @@ class controller:
         presence = EC.presence_of_element_located
         visible = EC.visibility_of_element_located
         return self.webdriver.get_driver().find_element_by_id("video-title").get_attribute("href")
+    
+    def download_music(self,url):
+        self.open("https://ytmp3.cc")
+        driver = self.webdriver.get_driver()
+        wait = WebDriverWait(driver, 3)
+        presence = EC.presence_of_element_located
+        visible = EC.visibility_of_element_located
+        driver.find_element_by_id("input").send_keys(url)
+        driver.find_element_by_id("submit").click()
+        wait.until(visible((By.XPATH, "/html/body/div[2]/div[1]/div[1]/div[3]/a[1]")))
+        driver.find_element_by_xpath("/html/body/div[2]/div[1]/div[1]/div[3]/a[1]").click()
+
+    def end(self):
+        self.webdriver.close()

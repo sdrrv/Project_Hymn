@@ -11,6 +11,6 @@ class musics_model:
 
     def delete_music(self,key):
         self.musics.pop(key,None)
-        
-    def get_musics_list(self):
-        return [music for music in self.musics]
+    
+    def get_url(self,music):
+        return self.musics[music]
