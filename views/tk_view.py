@@ -28,6 +28,8 @@ class tk_view:
         self.new_window_artist_input = None
         self.new_app = None
         self.new_window_submit_button = None
+        #?------------------------------second_wave---------------------------------
+        self.second_wave = None
 #!----------------------------------------------------------------------------------------------------------
     def update_grid(self):
         self.music_grid.delete(0,"end")
@@ -45,8 +47,8 @@ class tk_view:
         submit_list=self.controller.get_musics_list()
         for music in submit_list:
             self.controller.download_music(self.controller.get_musics_model().get_url(music))
-        self.controller.end()
-        exit(0)
+        self.end()
+
 
     def add_music_button_action(self):
         self.create_choice_window()
@@ -57,7 +59,7 @@ class tk_view:
         for i in to_del:
             self.controller.get_musics_model().delete_music(i)
         self.update_grid()
-    
+        self.second_wave=second_wave()
     def create_choice_window(self):
         #?---------------------------------------------------------------------
         self.new_app = tkinter.Toplevel(self.app)
@@ -87,11 +89,15 @@ class tk_view:
         self.new_app.destroy()
         self.new_app.update()
 
+    def end(self):
+        self.controller.end()
+        self.app.close()
+
 class second_wave:
     def __init__(self):
         #?------------------Creating-the-main-screen-----------------------------
         self.app = tkinter.Tk() #Making the main root
         self.app.geometry("200x200") # Setting the size of the main window
-        self.app.title("Hymn") 
+        self.app.title("Cd_Burner") 
         self.app.iconbitmap("icons/icon.ico") #Setting the main left top icon
         #?-----------------Populating-the-main-screen----------------------------
