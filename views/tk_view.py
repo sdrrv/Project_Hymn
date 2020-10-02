@@ -87,3 +87,11 @@ class tk_view:
         self.new_app.destroy()
         self.new_app.update()
 
+class second_wave:
+    def __init__(self):
+        #?------------------Creating-the-main-screen-----------------------------
+        self.app = tkinter.Tk() #Making the main root
+        self.app.geometry("200x200") # Setting the size of the main window
+        self.app.title("Hymn") 
+        self.app.iconbitmap("icons/icon.ico") #Setting the main left top icon
+        #?-----------------Populating-the-main-screen----------------------------

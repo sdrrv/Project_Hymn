@@ -40,3 +40,7 @@ class controller:
 
     def end(self):
         self.webdriver.close()
+
+class second_controller:
+    def __init__(self):
+        pass
