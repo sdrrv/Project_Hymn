@@ -45,7 +45,6 @@ class tk_view:
         submit_list=self.controller.get_musics_list()
         for music in submit_list:
             self.controller.download_music(self.controller.get_musics_model().get_url(music))
-        self.controller.open("https://www.google.com/")
         self.controller.end()
         exit(0)
 
@@ -87,3 +86,4 @@ class tk_view:
         self.add_music(music+" - "+artist,self.controller.shearch_youtube(music+" - "+artist) )
         self.new_app.destroy()
         self.new_app.update()
+

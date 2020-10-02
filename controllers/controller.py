@@ -36,6 +36,7 @@ class controller:
         driver.find_element_by_id("submit").click()
         wait.until(visible((By.XPATH, "/html/body/div[2]/div[1]/div[1]/div[3]/a[1]")))
         driver.find_element_by_xpath("/html/body/div[2]/div[1]/div[1]/div[3]/a[1]").click()
+        self.open("https://www.google.com/")
 
     def end(self):
         self.webdriver.close()
