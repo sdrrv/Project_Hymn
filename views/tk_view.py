@@ -47,7 +47,6 @@ class tk_view:
         submit_list=self.controller.get_musics_list()
         for music in submit_list:
             self.controller.download_music(self.controller.get_musics_model().get_url(music))
-        self.end()
 
 
     def add_music_button_action(self):
@@ -98,6 +97,8 @@ class second_wave:
         #?------------------Creating-the-main-screen-----------------------------
         self.app = tkinter.Tk() #Making the main root
         self.app.geometry("200x200") # Setting the size of the main window
-        self.app.title("Cd_Burner") 
+        self.app.title("Cd Burner") 
         self.app.iconbitmap("icons/icon.ico") #Setting the main left top icon
         #?-----------------Populating-the-main-screen----------------------------
+        self.button_main = tkinter.Button(master=self.app,text="Start",command=lambda:print("oi"),height = 5, width = 9)
+        self.button_main.pack(padx=10,pady=40)
